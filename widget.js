@@ -70,7 +70,7 @@ var _tdwfb_config = (typeof tdwfb_config  !== 'undefined') ? tdwfb_config  : {};
   if (widgetConfig.localAssets) {
     ASSET_URL = '../thedaywefightback/';
   } else {
-    ASSET_URL = 'http://tiagomadeira.com/thedaywefightback.js' +
+    ASSET_URL = 'https://passarim.org/thedaywefightback.js' +
       '/thedaywefightback/';
   }
 
