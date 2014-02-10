@@ -608,6 +608,10 @@ font-size:12px;
   padding-top:5px;
   margin-top:0px;
 }
+.brazil input[type="submit"] {
+    font-size:13px;
+    letter-spacing:0;
+}
 .international h3 {
   margin: 0 auto;
   font-size: 16px;
