@@ -146,6 +146,17 @@ $(document).ready( function () {
             jsonpCallback : 'ccca'
         });
     }
+    if($('#avaaz-count').length > 0) {
+        $.ajax('http://tiagomadeira.com/thedaywefightback.js/get_avaaz_count.php', {
+            success: function(res, err) {
+                var demo = new countUp("avaaz-count", 0, res.sign, 0, 2);
+                demo.start();
+            },
+            dataType: 'jsonp',
+            cache         : true,
+            jsonpCallback : 'ccca'
+        });
+    }
 
     // Animations for the fact text
 

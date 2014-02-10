@@ -70,7 +70,7 @@ var _tdwfb_config = (typeof tdwfb_config  !== 'undefined') ? tdwfb_config  : {};
   if (widgetConfig.localAssets) {
     ASSET_URL = '../thedaywefightback/';
   } else {
-    ASSET_URL = '//d1agz031tafz8n.cloudfront.net/thedaywefightback.js' +
+    ASSET_URL = 'http://tiagomadeira.com/thedaywefightback.js' +
       '/thedaywefightback/';
   }
 
@@ -140,8 +140,8 @@ var _tdwfb_config = (typeof tdwfb_config  !== 'undefined') ? tdwfb_config  : {};
       document.getElementsByTagName('head')[0].appendChild(script);
 
       window.tdwfbLocationCallBackFailSafe = setTimeout(function () {
-        // Set location to US and pass to callback
-        callback({country: {iso_code: 'US'}});
+        // Set location to Brazil and pass to callback
+        callback({country: {iso_code: 'BR'}});
       }, 5000);
     }
   };
@@ -249,15 +249,18 @@ var _tdwfb_config = (typeof tdwfb_config  !== 'undefined') ? tdwfb_config  : {};
 
         iframe.style.cssText = style.iframe;
 
-        var us = iframe.src = ASSET_URL + activeCampaign.config.show_style +
+        if ((isoCode === 'BR' && !widgetConfig.overrideLocation) ||
+            widgetConfig.overrideLocation === 'brazil') {
+          iframe.src = ASSET_URL + activeCampaign.config.show_style +
+            '_brazil.html?firstTime=' + firstTime + '&iso=' + isoCode +
+            '&greeting=' + widgetConfig.greeting;
+        } else if ((isoCode === 'US' && !widgetConfig.overrideLocation) ||
+            widgetConfig.overrideLocation === 'usa') {
+          // Set the source of the iframe to the configured show_style type
+          iframe.src = ASSET_URL + activeCampaign.config.show_style +
           '.html?firstTime=' + firstTime + '&callOnly=' +
           widgetConfig.callOnly + '&iso=' + isoCode + '&greeting=' +
           widgetConfig.greeting;
-
-        if ((isoCode === 'US' && !widgetConfig.overrideLocation) ||
-            widgetConfig.overrideLocation === 'usa') {
-          // Set the source of the iframe to the configured show_style type
-          iframe.src = us;
         } else if ((isoCode !== 'US' && !widgetConfig.overrideLocation) ||
             widgetConfig.overrideLocation === 'international') {
           iframe.src = ASSET_URL + activeCampaign.config.show_style +

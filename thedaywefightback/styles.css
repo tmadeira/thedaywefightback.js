@@ -590,6 +590,9 @@ font-size:12px;
   margin-right:2%;
   margin-bottom: 7px;
 }
+.international.brazil .form-group.inline {
+  width: 49%;
+}
 .international .form-group.inline.last {
   margin-right:0;
 }
